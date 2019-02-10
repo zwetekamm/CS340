@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Resorts</title>
+</head>
+<body>
+	<h1 class="container text-center mb-4">Manage/Edit Resorts</h1>
+
+	<div class="container border">
+		<table class="table">
+			<h3>Resorts in the Database</h3>
+			<p>(Will populate with entity info)</p>
+			<thead>
+				<th>Name</th>
+				<th>Location</th>
+				<th>Size</th>
+				<th>Price</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>x</td>
+					<td>x</td>
+					<td>x</td>
+					<td>x</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/get_resorts" class="btn-primary btn-sm">Get Data</a>
+	</div>
+
+	<div class="container-fluid row">
+		<div class="container col-4 my-4 border">
+			<h3>Add Resort</h3>
+			<form id="insert_resort" action="/insert_resort" method="POST">
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" name="name">
+				</div>
+				<div class="form-group">
+					<label for="location">Location:</label>
+					<input type="text" class="form-control" name="location">
+				</div>
+				<div class="form-group">
+					<label for="size">Size:</label>
+					<input type="text" class="form-control" name="size">
+				</div>
+				<div class="form-group">
+					<label for="price">Price:</label>
+					<input type="text" class="form-control" name="price">
+				</div>
+				<button type="submit" class="btn btn-primary">ADD</button>
+			</form>
+		</div>
+
+		<div class="container col-4 my-4 border">
+			<h3>Update Resort</h3>
+			<form id="update_resort" action="/update_resort" method="POST">
+				<div class="form-group">
+					<label for="name">Select Resort:</label>
+					<select class="form-control" name="name">
+						<option>name</option>
+						<option>name</option>
+						<option>Etc...</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" name="name">
+				</div>
+				<div class="form-group">
+					<label for="location">Location:</label>
+					<input type="text" class="form-control" name="location">
+				</div>
+				<div class="form-group">
+					<label for="size">Size:</label>
+					<input type="text" class="form-control" name="size">
+				</div>
+				<div class="form-group">
+					<label for="price">Price:</label>
+					<input type="text" class="form-control" name="price">
+				</div>
+				<button type="submit" class="btn btn-primary">UPDATE</button>
+			</form>
+		</div>
+
+		<div class="container col-3 my-4 border">
+			<h3>Remove Resort</h3>
+			<form id="delete_resort" action="/delete_resort" method="POST">
+				<div class="form-group">
+					<label for="name">Select Resort:</label>
+					<select class="form-control" name="name">
+						<option>name</option>
+						<option>name</option>
+						<option>Etc...</option>
+					</select>
+				</div>
+				<button type="submit" class="btn btn-danger">REMOVE</button>
+			</form>
+		</div>
+	</div>
+	
+	<div class="container">
+		<a href="index.html">Back to Home Page</a>
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
