@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<h1 class="container text-center mb-4">Roles</h1>
+
+<div class="container border">
+	<table class="table">
+		<h3>Roles in the Database</h3>
+		<thead>
+			<th>Title</th>
+		</thead>
+		<tbody>
+			{{#each roles}}
+			<tr>
+				<td>{{title}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
+
+<div class="container-fluid row">
+	<div class="container col-4 my-4 border">
+		<h3>Add Role</h3>
+		<form action="/roles" method="POST">
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" class="form-control" name="title">
+			</div>
+			<button type="submit" class="btn btn-primary">ADD</button>
+		</form>
+	</div>
+
+	<div class="container col-4 my-4 border">
+		<h3>Update Role</h3>
+		<form action="/roles" method="POST">
+			<div class="form-group">
+				<label for="title">Select Role:</label>
+				<select class="form-control" name="title">
+					{{#each roles}}
+					<option value="{{id}}">{{title}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" class="form-control" name="title">
+			</div>
+			<button type="submit" class="btn btn-primary">UPDATE</button>
+		</form>
+	</div>
+
+	<div class="container col-3 my-4 border">
+		<h3>Remove Role</h3>
+		<form action="/roles" method="POST">
+			<div class="form-group">
+				<label for="title">Select Role:</label>
+				<select class="form-control" name="title">
+					{{#each roles}}
+					<option value="{{id}}">{{title}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-danger">REMOVE</button>
+		</form>
+	</div>
+</div>
+
+<div class="container">
+	<a href="index.html">Back to Home Page</a>
+</div>
+
+</html>

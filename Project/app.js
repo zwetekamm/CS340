@@ -1,41 +1,25 @@
-var http = require('http');
 var express = require('express');
 var mysql = require('./dbcon.js');
+var bodyParser = require('body-parser');
 
 var app = express();
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 
 app.engine('handlebars', handlebars.engine);
+app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'handlebars');
-app.set('port', 5085);
+app.set('port', process.argv[2]);
+app.set('mysql', mysql);
 
-app.get('/', function(req, res) {
-	res.sendFile(__dirname+"/index.html");
-});
 
-app.get('/index.html', function(req, res) {
-	res.sendFile(__dirname+"/index.html");
-});
 
-app.get('/resorts.html', function(req, res) {
-	res.sendFile(__dirname+"/resorts.html");
-});
-
-app.get('/lifts.html', function(req, res) {
-	res.sendFile(__dirname+"/lifts.html");
-});
-
-app.get('/employees.html', function(req, res) {
-	res.sendFile(__dirname+"/employees.html");
-});
-
-app.get('/roles.html', function(req, res) {
-	res.sendFile(__dirname+"/roles.html");
-});
-
-app.get('/daily_assignment.html', function(req, res) {
-	res.sendFile(__dirname+"/daily_assignment.html");
-});
+app.use('/', express.static('public'));
+app.use('/static', express.static('public'));
+app.use('/employees', require('./employees.js'));
+app.use('/lifts', require('./lifts.js'));
+app.use('/resorts', require('./resorts.js'));
+app.use('/roles', require('./roles.js'));
+app.use('/schedule', require('./schedule.js'));
 
 app.use(function(req, res) {
 	res.status(404);

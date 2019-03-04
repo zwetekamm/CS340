@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<h1 class="container text-center mb-4">Resorts</h1>
+
+<div class="container border">
+	<table class="table">
+		<h3>Resorts in the Database</h3>
+		<thead>
+			<th>Name</th>
+			<th>Location</th>
+			<th>Size</th>
+			<th>Price</th>
+		</thead>
+		<tbody>
+			{{#each resorts}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{location}}</td>
+				<td>{{size}}</td>
+				<td>{{price}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
+
+<div class="container-fluid row">
+	<div class="container col-4 my-4 border">
+		<h3>Add Resort</h3>
+		<form action="/resorts" method="POST">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" name="name">
+			</div>
+			<div class="form-group">
+				<label for="location">Location:</label>
+				<input type="text" class="form-control" name="location">
+			</div>
+			<div class="form-group">
+				<label for="size">Size:</label>
+				<input type="text" class="form-control" name="size">
+			</div>
+			<div class="form-group">
+				<label for="price">Price:</label>
+				<input type="text" class="form-control" name="price">
+			</div>
+			<button type="submit" class="btn btn-primary">ADD</button>
+		</form>
+	</div>
+
+	<div class="container col-4 my-4 border">
+		<h3>Update Resort</h3>
+		<form action="/resorts" method="POST">
+			<div class="form-field">
+				<label for="name">Select Resort:</label>
+				<select class="form-control" name="name">
+					{{#each resorts}}
+					<option value="{{id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" name="name">
+			</div>
+			<div class="form-group">
+				<label for="location">Location:</label>
+				<input type="text" class="form-control" name="location">
+			</div>
+			<div class="form-group">
+				<label for="size">Size:</label>
+				<input type="text" class="form-control" name="size">
+			</div>
+			<div class="form-group">
+				<label for="price">Price:</label>
+				<input type="text" class="form-control" name="price">
+			</div>
+			<button type="submit" class="btn btn-primary">UPDATE</button>
+		</form>
+	</div>
+
+	<div class="container col-3 my-4 border">
+		<h3>Remove Resort</h3>
+		<form action="/resorts" method="POST">
+			<div class="form-group">
+				<label for="name">Select Resort:</label>
+				<select class="form-control" name="name">
+					{{#each resorts}}
+					<option value="{{id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-danger">REMOVE</button>
+		</form>
+	</div>
+</div>
+
+<div class="container">
+	<a href="index.html">Back to Home Page</a>
+</div>
+
+</html>

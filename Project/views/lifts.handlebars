@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<h1 class="container text-center mb-4">Lifts</h1>
+
+<div class="container border">
+	<table class="table">
+		<h3>Lifts in the Database</h3>
+		<thead>
+			<th>Name</th>
+			<th>Capacity</th>
+			<th>High-Speed</th>
+			<th>Parent Resort</th>
+		</thead>
+		<tbody>
+			{{#each lifts}}
+			<tr>
+				<td>{{name}}</td>
+				<td>{{capacity}}</td>
+				<td>{{highspeed}}</td>
+				<td>{{rname}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
+<div class="container-fluid row">
+	<div class="container col-4 my-4 border">
+		<h3>Add Lift</h3>
+		<form action="/lifts" method="POST">
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" name="name">
+			</div>
+			<div class="form-group">
+				<label for="capacity">Capacity:</label>
+				<select class="form-control" name="capacity">
+					<option value="2">2</option>
+					<option value="4">4</option>
+					<option value="6">6</option>					
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="speed">High-speed?</label>
+				<select class="form-control" name="highspeed">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="resort">Parent Resort:</label>
+				<select class="form-control" name="resort">
+					{{#each resorts}}
+						<option value="{{id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">ADD</button>
+		</form>
+	</div>
+
+	<div class="container col-4 my-4 border">
+		<h3>Update Lift</h3>
+		<form action="/lifts" method="POST">
+			<div class="form-group">
+				<label for="name">Select Lift:</label>
+				<select class="form-control" name="name">
+					<option>name</option>
+					<option>name</option>
+					<option>Etc...</option>
+				</select>
+			</div>				
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input type="text" class="form-control" name="name">
+			</div>
+			<div class="form-group">
+				<label for="capacity">Capacity:</label>
+				<select class="form-control" name="capacity">
+					<option value="2">2</option>
+					<option value="4">4</option>
+					<option value="6">6</option>					
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="speed">High-speed?</label>
+				<select class="form-control" name="highspeed">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="resort">Parent Resort:</label>
+				<select class="form-control" name="resort">
+					{{#each resorts}}
+						<option value="{{id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">UPDATE</button>
+		</form>
+	</div>
+
+	<div class="container col-3 my-4 border">
+		<h3>Remove Lift</h3>
+		<form action="lifts" method="POST">
+			<div class="form-group">
+				<label for="name">Select Lift:</label>
+				<select class="form-control" name="name">
+					<option>name</option>
+					<option>name</option>
+					<option>Etc...</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-danger">REMOVE</button>
+		</form>
+	</div>
+</div>
+
+<div class="container">
+	<a href="index.html">Back to Home Page</a>
+</div>
+
+</html>

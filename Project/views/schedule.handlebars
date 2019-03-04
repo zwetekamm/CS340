@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<h1 class="container text-center mb-4">Schedule</h1>
+
+<div class="container border">
+	<table class="table">
+		<h3>Schedule Assignments</h3>
+		<thead>
+			<th>Date (desc)</th>
+			<th>Id</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Role</th>
+			<th>Lift</th>
+		</thead>
+		<tbody>
+			{{#each schedule}}
+			<tr>
+				<td>{{date}}</td>
+				<td>{{id}}</td>
+				<td>{{fname}}</td>
+				<td>{{lname}}</td>
+				<td>{{title}}</td>
+				<td>{{name}}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>
+</div>
+
+<div class="container-fluid row">
+	<div class="container col-4 my-4 border">
+		<h3>Add to Schedule</h3>
+		<form action="/schedule" method="POST">
+			<div class="form-group">
+				<label for="employee">Employee:</label>
+				<select class="form-control" name="employee_id">
+					{{#each employees}}
+					<option value="{{employee_id}}">{{fname}} {{lname}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="role">Role:</label>
+				<select class="form-control" name="role_id">
+					{{#each roles}}
+					<option value="{{role_id}}">{{title}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="lift">Lift:</label>
+				<select class="form-control" name="lift_id">
+					{{#each lifts}}
+					<option value="{{lift_id}}">{{name}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="date">Date:</label>
+				<input type="text" class="form-control" name="date" placeholder="YYYY-MM-DD">
+			</div>
+			<button type="submit" class="btn btn-primary">ADD</button>
+		</form>
+	</div>
+
+	<div class="container col-4 my-4 border">
+		<h3>Update Schedule</h3>
+		<form action="/schedule" method="POST">
+			<div class="form-group">
+				<label for="id">Select Schedule Id:</label>
+				<select class="form-control" name="id">
+					{{#each orderedIds}}
+					<option value="{{id}}">{{id}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="employee">Employee:</label>
+				<select class="form-control" name="employee">
+					<option>fname lname</option>
+					<option>fname lname</option>
+					<option>Etc...</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="role">Role:</label>
+				<select class="form-control" name="role">
+					<option>Title</option>
+					<option>TItle</option>
+					<option>Etc...</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="lift">Lift:</label>
+				<select class="form-control" name="lift">
+					<option>Lift</option>
+					<option>Lift</option>
+					<option>Etc...</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="date">Date:</label>
+				<input type="text" class="form-control" name="date" placeholder="YYYY-MM-DD">
+			</div>
+			<button type="submit" class="btn btn-primary">UPDATE</button>
+		</form>
+	</div>
+
+	<div class="container col-3 my-4 border">
+		<h3>Remove Daily Assignment</h3>
+		<form action="/schedule" method="POST">
+			<div class="form-group">
+				<label for="id">Select Schedule Id:</label>
+				<select class="form-control" name="id">
+					{{#each orderedIds}}
+					<option value="{{id}}">{{id}}</option>
+					{{/each}}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-danger">REMOVE</button>
+		</form>
+	</div>
+</div>
+</div>
+
+<div class="container">
+	<a href="index.html">Back to Home Page</a>
+</div>
+</html>
