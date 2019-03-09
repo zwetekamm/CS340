@@ -1,0 +1,19 @@
+.navbar .row a {
+	text-decoration: none;
+	color: black;
+	padding: 0 12px;
+}
+
+header {
+	margin: 70px 0 30px 0;
+	padding: 15px;
+}
+
+#entityList {
+	list-style: none;
+	padding-left: 10px;
+}
+
+#entityList li {
+	padding: 5px 0;
+}

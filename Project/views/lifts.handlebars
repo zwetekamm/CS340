@@ -19,13 +19,15 @@
 				<td>{{capacity}}</td>
 				<td>{{highspeed}}</td>
 				<td>{{rname}}</td>
+				<td><a href="/lifts/{{id}}">Update</a></td>
+				<td><button class="btn btn-danger" onclick="deleteLift({{id}})">Delete</button></td>
 			</tr>
 			{{/each}}
 		</tbody>
 	</table>
 </div>
 <div class="container-fluid row">
-	<div class="container col-4 my-4 border">
+	<div class="container col-6 my-4 border">
 		<h3>Add Lift</h3>
 		<form action="/lifts" method="POST">
 			<div class="form-group">
@@ -37,14 +39,14 @@
 				<select class="form-control" name="capacity">
 					<option value="2">2</option>
 					<option value="4">4</option>
-					<option value="6">6</option>					
+					<option value="6">6</option>
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="speed">High-speed?</label>
+				<label for="highspeed">High-speed?</label>
 				<select class="form-control" name="highspeed">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -58,67 +60,9 @@
 			<button type="submit" class="btn btn-primary">ADD</button>
 		</form>
 	</div>
-
-	<div class="container col-4 my-4 border">
-		<h3>Update Lift</h3>
-		<form action="/lifts" method="POST">
-			<div class="form-group">
-				<label for="name">Select Lift:</label>
-				<select class="form-control" name="name">
-					<option>name</option>
-					<option>name</option>
-					<option>Etc...</option>
-				</select>
-			</div>				
-			<div class="form-group">
-				<label for="name">Name:</label>
-				<input type="text" class="form-control" name="name">
-			</div>
-			<div class="form-group">
-				<label for="capacity">Capacity:</label>
-				<select class="form-control" name="capacity">
-					<option value="2">2</option>
-					<option value="4">4</option>
-					<option value="6">6</option>					
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="speed">High-speed?</label>
-				<select class="form-control" name="highspeed">
-					<option value="yes">Yes</option>
-					<option value="no">No</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="resort">Parent Resort:</label>
-				<select class="form-control" name="resort">
-					{{#each resorts}}
-						<option value="{{id}}">{{name}}</option>
-					{{/each}}
-				</select>
-			</div>
-			<button type="submit" class="btn btn-primary">UPDATE</button>
-		</form>
-	</div>
-
-	<div class="container col-3 my-4 border">
-		<h3>Remove Lift</h3>
-		<form action="lifts" method="POST">
-			<div class="form-group">
-				<label for="name">Select Lift:</label>
-				<select class="form-control" name="name">
-					<option>name</option>
-					<option>name</option>
-					<option>Etc...</option>
-				</select>
-			</div>
-			<button type="submit" class="btn btn-danger">REMOVE</button>
-		</form>
-	</div>
 </div>
 
 <div class="container">
-	<a href="index.html">Back to Home Page</a>
+	<button class="btn"><a href="index.html">Home Page</a></button>
 </div>
-
 </html>

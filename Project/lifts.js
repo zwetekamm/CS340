@@ -41,11 +41,25 @@ module.exports = function(){
 		});
 	}
 
+	// Gets one lift for the purpose of updating
+	function getLift(res, mysql, context, id, complete){
+		var sql = "SELECT id, name, capacity, highspeed, resort_id FROM lifts WHERE id=?";
+		var inserts = [id];
+		mysql.pool.query(sql, inserts, function(err, results, fields){
+			if(err){
+				res.write(JSON.stringify(err));
+				res.end();
+			}
+			context.lifts = results[0];
+			complete();
+		})
+	}
 	// Root, which calls getEmployees, getLifts, and getResorts
 	router.get('/', function(req, res){
 		var callbackCount = 0;
 		var context = {};
 		var mysql = req.app.get('mysql');
+		context.jsscripts = ["editLifts.js"];
 		getEmployees(res, mysql, context, complete);
 		getResorts(res, mysql, context, complete);
 		getLifts(res, mysql, context, complete);
@@ -57,10 +71,46 @@ module.exports = function(){
 		}
 	});
 
-	// Add Employee
+	router.get('/:id', function(req, res){
+		callbackCount = 0;
+		var context = {};
+		context.jsscripts = ["editLifts.js"];
+		var mysql = req.app.get('mysql');
+		getLift(res, mysql, context, req.params.id, complete);
+		getResorts(res, mysql, context, complete);
+		function complete(){
+			callbackCount++; 	
+			if(callbackCount >= 2){
+				res.render('update-lift', context);
+			}
+		}
+
+	});
+
+		router.post('/:id', function(req, res){
+		var mysql = req.app.get('mysql');
+		console.log(req.body);
+		console.log(req.params.id);
+		var sql = "UPDATE lifts SET name=?, capacity=?, highspeed=?, resort_id=? WHERE lifts.id=?";
+		var inserts = [req.body.name, req.body.capacity, req.body.highspeed, req.body.resort, req.params.id];
+		sql = mysql.pool.query(sql, inserts, function(err, results, fields){
+			if(err){
+				console.log(err);
+				res.write(JSON.stringify(err));
+				res.end();
+			} else{
+				res.redirect('/lifts');
+				res.status(200);
+				res.end();
+				console.log("One employee updated: " + req.body.employee + ', '+ req.body.fname);
+			}
+		});
+	});
+
+	// Add lift
 	router.post('/', function(req, res){
 		var mysql = req.app.get('mysql');
-		var sql = "INSERT INTO lifts (name, capacity, highspeed, resort_id)VALUES (?,?,?,?)";
+		var sql = "INSERT INTO lifts (name, capacity, highspeed, resort_id) VALUES (?,?,?,?)";
 		var inserts = [req.body.name, req.body.capacity, req.body.highspeed, req.body.resort];
 		sql = mysql.pool.query(sql, inserts, function(err, results, fields){
 			if(err){
@@ -73,5 +123,21 @@ module.exports = function(){
 		});
 	});
 
+	//Deletes lift
+	router.delete('/:id', function(req, res){
+		var mysql = req.app.get('mysql');
+		var sql = "DELETE FROM lifts WHERE id = ?";
+		var inserts = [req.params.id];
+		sql = mysql.pool.query(sql, inserts, function(err, results, fields){
+			if(err){
+				res.write(JSON.stringify(err));
+				res.status(400);
+				res.end();
+			}
+			else{
+				res.status(202).end();
+			}
+		});
+	});
 	return router;
 }();

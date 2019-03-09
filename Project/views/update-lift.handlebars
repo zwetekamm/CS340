@@ -1,0 +1,40 @@
+<div class="container text-center mb-4">
+	<h2>Update Lift: {{lifts.name}} </h2>
+</div>
+
+<div class="container col-6 my-4 border">
+	<form id="update-lift" action="/lifts/{{lifts.id}}" method="POST">
+		<div class="form-group">
+			<label for="name">Name:</label>
+			<input type="text" class="form-control" name="name" value="{{lifts.name}}">
+		</div>
+		<div class="form-group">
+			<label for="capacity">Capacity:</label>
+			<select id="capacity-selector" class="form-control" name="capacity">
+				<option value="2">2</option>
+				<option value="4">4</option>
+				<option value="6">6</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="highspeed">High-speed?</label>
+			<select id="highspeed-selector" class="form-control" name="highspeed">
+				<option value="Yes">Yes</option>
+				<option value="No">No</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="resort">Resort:</label>
+			<select id="resort-selector" class="form-control" name="resort">
+				{{#each resorts}}
+					<option value="{{id}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<button class="btn btn-primary" onclick="updateLift({{lifts.id}})">UPDATE</button>	
+	</form>
+</div>
+
+<script defer>selectCapacity({{lifts.capacity}});</script>
+<script defer>selectHighspeed({{lifts.highspeed}});</script>
+<script defer>selectResort({{lifts.resort_id}});</script>

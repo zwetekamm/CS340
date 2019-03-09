@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <h1 class="container text-center mb-4">Employees</h1>
 
 <div class="container border">
@@ -21,6 +20,8 @@
 				<td>{{birthday}}</td>
 				<td>{{rname}}</td>
 				<td>{{liname}}</td>
+				<td><a href="/employees/{{id}}">Update</a></td>
+				<td><button class="btn btn-danger" onclick="deleteEmployee({{id}})">Delete</button></td>
 			</tr>
 			{{/each}}
 		</tbody>
@@ -28,7 +29,7 @@
 </div>
 
 <div class="container-fluid row">
-	<div class="container col-4 my-4 border">
+	<div class="container col-6 my-4 border">
 		<h3>Add Employee</h3>
 		<form action="/employees" method="POST">
 			<div class="form-group">
@@ -41,7 +42,7 @@
 			</div>
 			<div class="form-group">
 				<label for="birthday">Date of Birth:</label>
-				<input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD">
+				<input type="Date" class="form-control" name="birthday">
 			</div>
 			<div class="form-group">
 				<label for="resort">Assigned Resort:</label>
@@ -62,68 +63,10 @@
 			<button type="submit" class="btn btn-primary">Add</button>
 		</form>
 	</div>
-
-	<div class="container col-4 my-4 border">
-		<h3>Update Employee</h3>
-		<form id="update_employee" action="/update_employee" method="POST">
-			<div class="form-group">
-				<label for="employee">Select Employee:</label>
-				<select class="form-control" name="employee">
-					<option>fname lname</option>
-					<option>fname lname</option>
-					<option>Etc...</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="fname">First Name:</label>
-				<input type="text" class="form-control" name="fname">
-			</div>
-			<div class="form-group">
-				<label for="lname">Last Name:</label>
-				<input type="text" class="form-control" name="lname">
-			</div>
-			<div class="form-group">
-				<label for="birthday">Date of Birth:</label>
-				<input type="text" class="form-control" name="birthday" placeholder="YYYY-MM-DD">
-			</div>
-			<div class="form-group">
-				<label for="resort">Assigned Resort:</label>
-				<select class="form-control" name="resort">
-					<option>Resort Name</option>
-					<option>Resort Name</option>
-					<option>Etc...</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="lift">Assigned Lift:</label>
-				<select class="form-control" name="lift">
-					<option>Lift Name</option>
-					<option>Lift Name</option>
-					<option>Etc...</option>
-				</select>
-			</div>
-			<button type="submit" class="btn btn-primary">UPDATE</button>
-		</form>
-	</div>
-
-	<div class="container col-3 my-4 border">
-		<h3>Remove Employee</h3>
-		<form id="delete_employee" action="/delete_employee" method="POST">
-			<div class="form-group">
-				<label for="employee">Select Employee:</label>
-				<select class="form-control" name="employee">
-					<option>fname lname</option>
-					<option>fname lname</option>
-					<option>Etc...</option>
-				</select>
-			</div>
-			<button type="submit" class="btn btn-danger">REMOVE</button>
-		</form>
-	</div>
 </div>
 
 <div class="container">
-	<a href="index.html">Back to Home Page</a>
+	<button class="btn"><a href="index.html">Home Page</a></button>
 </div>
 
 </html>

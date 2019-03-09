@@ -1,0 +1,45 @@
+<div class="container text-center mb-4">
+	<h2>Update Schedule:</h2>
+</div>
+
+<div class="container col-6 my-4">
+	<form id="update-schedule" action="/schedule/{{schedule.id}}" method="POST">
+		<div class="form-group">
+			<label for="employee">Employee:</label>
+			<select id="employee-selector" class="form-control" name="employee_id">
+				{{#each employees}}
+				<option value="{{id}}">{{fname}} {{lname}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="role">Role:</label>
+			<select id="role-selector" class="form-control" name="role_id">
+				{{#each roles}}
+				<option value="{{id}}">{{title}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="lift">Lift:</label>
+			<select id="lift-selector" class="form-control" name="lift_id">
+				{{#each lifts}}
+				<option value="{{id}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="date">Date:</label>
+			<input type="Date" class="form-control" name="date" value="{{schedule.date}}">
+		</div>
+		<button class="btn btn-primary" onclick="updateSchedules({{schedule.id}})">UPDATE</button>
+	</form>
+</div>
+
+<div class="container">
+	<button class="btn"><a href="/schedule">Back</a></button>
+</div>
+
+<script defer>selectEmployee({{schedule.employee_id}});</script>
+<script defer>selectRole({{schedule.role_id}});</script>
+<script defer>selectLift({{schedule.lift_id}});</script>
