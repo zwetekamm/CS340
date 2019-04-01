@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html>
+<button class="btn"><a href="index.html">Home Page</a></button>
+
 <h1 class="container text-center mb-4">Schedule</h1>
 
-<div class="container border">
+<div id="customTable" class="container col-10">
 	<table class="table">
-		<h3>Schedule Assignments</h3>
 		<thead>
 			<th>Date (desc)</th>
 			<th>First Name</th>
@@ -15,57 +14,50 @@
 		<tbody>
 			{{#each schedule}}
 			<tr>
-				<td>{{date}}</td>
+				<td id="formatDate" style="border-top: 1px solid white;">{{date}}</td>
 				<td>{{fname}}</td>
 				<td>{{lname}}</td>
 				<td>{{title}}</td>
 				<td>{{name}}</td>
-				<td><a href="/schedule/{{id}}">Update</a></td>
-				<td><button class="btn btn-danger" onclick="deleteSchedule({{id}})">Delete</button></td>
+				<td id="tableBtn"><a href="/schedule/{{id}}">Update</a></td>
+				<td id="tableBtn"><button class="btn btn-danger" onclick="deleteSchedule({{id}})">Delete</button></td>
 			</tr>
 			{{/each}}
 		</tbody>
 	</table>
 </div>
 
-<div class="container-fluid row">
-	<div class="container col-6 my-4 border">
-		<h3>Add to Schedule</h3>
-		<form action="/schedule" method="POST">
-			<div class="form-group">
-				<label for="employee">Employee:</label>
-				<select class="form-control" name="employee_id">
-					{{#each employees}}
-					<option value="{{id}}">{{fname}} {{lname}}</option>
-					{{/each}}
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="role">Role:</label>
-				<select class="form-control" name="role_id">
-					{{#each roles}}
-					<option value="{{id}}">{{title}}</option>
-					{{/each}}
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="lift">Lift:</label>
-				<select class="form-control" name="lift_id">
-					{{#each lifts}}
-					<option value="{{id}}">{{name}}</option>
-					{{/each}}
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="date">Date:</label>
-				<input type="Date" class="form-control" name="date" placeholder="YYYY-MM-DD">
-			</div>
-			<button type="submit" class="btn btn-primary">ADD</button>
-		</form>
-	</div>
+<div class="container col-6 my-4">
+	<h3>Add to Schedule</h3>
+	<form action="/schedule" method="POST">
+		<div class="form-group">
+			<label for="employee">Employee:</label>
+			<select class="form-control" name="employee_id">
+				{{#each employees}}
+				<option value="{{id}}">{{fname}} {{lname}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="role">Role:</label>
+			<select class="form-control" name="role_id">
+				{{#each roles}}
+				<option value="{{id}}">{{title}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="lift">Lift:</label>
+			<select class="form-control" name="lift_id">
+				{{#each lifts}}
+				<option value="{{id}}">{{name}}</option>
+				{{/each}}
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="date">Date:</label>
+			<input type="Date" class="form-control" name="date" required>
+		</div>
+		<button type="submit" class="btn btn-primary col-4">Add</button>
+	</form>
 </div>
-
-<div class="container">
-	<button class="btn"><a href="index.html">Home Page</a></button>
-</div>
-</html>

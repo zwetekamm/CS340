@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html>
+<button class="btn"><a href="index.html">Home Page</a></button>
 
 <h1 class="container text-center mb-4">Roles</h1>
 
-<div class="container border">
+<div id="customTable" class="container col-6">
 	<table class="table">
-		<h3>Roles in the Database</h3>
 		<thead>
 			<th>Title</th>
 		</thead>
@@ -13,29 +11,21 @@
 			{{#each roles}}
 			<tr>
 				<td>{{title}}</td>
-				<td><a href="/roles/{{id}}">Update</a></td>
-				<td><button class="btn btn-danger" onclick="deleteRole({{id}})">Delete</button></td>
+				<td id="tableBtn"><a href="/roles/{{id}}">Update</a></td>
+				<td id="tableBtn"><button class="btn btn-danger" onclick="deleteRole({{id}})">Delete</button></td>
 			</tr>
 			{{/each}}
 		</tbody>
 	</table>
 </div>
 
-<div class="container-fluid row">
-	<div class="container col-6 my-4 border">
-		<h3>Add Role</h3>
-		<form action="/roles" method="POST">
-			<div class="form-group">
-				<label for="title">Title:</label>
-				<input type="text" class="form-control" name="title">
-			</div>
-			<button type="submit" class="btn btn-primary">ADD</button>
-		</form>
-	</div>
+<div class="container col-6 my-4">
+	<h3>Add Role</h3>
+	<form action="/roles" method="POST">
+		<div class="form-group">
+			<label for="title">Title:</label>
+			<input type="text" class="form-control" name="title" maxlength="30" required>
+		</div>
+		<button type="submit" class="btn btn-primary col-4">Add</button>
+	</form>
 </div>
-
-<div class="container">
-	<button class="btn"><a href="index.html">Home Page</a></button>
-</div>
-
-</html>

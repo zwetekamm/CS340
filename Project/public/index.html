@@ -2,30 +2,73 @@
 <html>
 <head>
 	<meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<title>Ski Resort</title>
 </head>
-<body>
-	<div class="container">
-		<h1>Ski Resort</h1>
-		<h3>CS 340 - Group 60: Bart Hough and Zachary Wetekamm</h3>
-		<p>Concept is a Ski Resort business consisting of a resorts, lift areas, employees, and employee roles.</p>
-		<p>Each resort can have lifts, which also have employees that work in specific roles.</p>
-	</div>
 
-	<div class="container my-4">
-		<h4><a href="/resorts">Resorts</a></h4>
-		<h4><a href="/lifts">Lifts</a></h4>
-		<h4><a href="/employees">Employees</a></h4>
-		<h4><a href="/roles">Roles</a></h4>
-		<h4><a href="/schedule">Schedule</a></h4>	
-	</div>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand">Ski Resort</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav container">
+        <a class="nav-item nav-link" href="/resorts">Resorts</a>
+        <a class="nav-item nav-link" href="/lifts">Lifts</a>
+        <a class="nav-item nav-link" href="/employees">Employees</a>
+        <a class="nav-item nav-link" href="/roles">Roles</a>
+        <a class="nav-item nav-link" href="/schedule">Schedule</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid p-0">
+    <img src="images/resort.jpg" style="width:100%; height: auto;">
+  </div>
+
+  <header class="jumbotron bg-light">
+  	<div class="text-center mb-4">
+      <h1>Ski Resort</h1>
+      <h4>CS340 - Bart Hough and Zack Wetekamm</h4>
+    </div>
+
+		<div class="text-center">
+			<p class="lead">Resource and management site for a Ski Resort conglomerate</p>
+			<p class="lead">Users can maintain Resorts, Lifts, Employees, Roles, and Schedule for their Ski Resort</p>
+		</div>
+  </header>
+
+  <div class="row container-fluid">
+  	<div class="container col-5 float-right">
+  		<img src="images/gear.jpg" style="width:100%; height: auto;">
+  	</div>
+  	<div class="container col-4">
+  		<h3>Add, Update, and Remove</h3>
+  		<p class="lead">For any of the Ski Resort's entities, perform CRUD operations to alter the database.</p>  
+  		<p class="lead">The database uses Node.js to execute create, read, update, and delete functionalities.</p>
+  	</div>
+  </div>
+
+  <div class="row container-fluid bg-light">
+  	<div class="container col-4 text-right">
+  	    <h3>Many Relationships</h3>
+  		<ul id="entityList">
+  			<li class="lead">Resorts exists as a hierarchal entity</li>
+  			<li class="lead">Lifts belong to specific Resorts</li>
+  			<li class="lead">Employees can work a specific Lift and Role</li>
+  		</ul>
+  	</div>
+  	<div class="container col-5">
+  		<img src="images/resort2.jpg" style="width:100%; height: auto;">    		
+  	</div>
+  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js" integrity="sha256-dHf/YjH1A4tewEsKUSmNnV05DDbfGN3g7NMq86xgGh8=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="../resorts.js"></script>
 </body>
 </html>
 

@@ -1,24 +1,28 @@
+<button class="btn"><a href="/employees">Back</a></button>
+
 <div class="container text-center mb-4">
-	<h2>Update Employee: {{employees.fname}} {{employees.lname}}</h2>
+	<h2>Update Employee:</h2>
+	<h3>{{employees.fname}} {{employees.lname}}</h3>
 </div>
 
 <div class="container col-6 my-4">
 	<form id="update-employee" action="/employees/{{employees.id}}" method="POST">	
 		<div class="form-group">
 			<label for="fname">First Name:</label>
-			<input type="text" class="form-control" name="fname" value="{{employees.fname}}">
+			<input type="text" class="form-control" name="fname" value="{{employees.fname}}" maxlength="20" required>
 		</div>
 		<div class="form-group">
 			<label for="lname">Last Name:</label>
-			<input type="text" class="form-control" name="lname" value="{{employees.lname}}">
+			<input type="text" class="form-control" name="lname" value="{{employees.lname}}" maxlength="20" required>
 		</div>
 		<div class="form-group">
 			<label for="birthday">Date of Birth:</label>
-			<input type="Date" class="form-control" name="birthday" value="{{employees.birthday}}">
+			<input type="Date" class="form-control" name="birthday" value="{{employees.birthday}}" required>
+			<small id="formatSmallDate" class="form-text text-muted">Current listed: {{employees.birthday}}</small>
 		</div>
 		<div class="form-group">
 			<label for="resort">Assigned Resort:</label>
-			<select id="resort-selector" class="form-control" name="resort">
+			<select class="form-control" name="resort" id="resort-selector" required>
 				{{#each resorts}}
 					<option value="{{id}}">{{name}}</option>
 				{{/each}}
@@ -26,18 +30,13 @@
 		</div>
 		<div class="form-group">
 			<label for="lift">Assigned Lift:</label>
-			<select id="lift-selector" class="form-control" name="lift">
+			<select class="form-control" name="lift" id="lift-selector" required>
 				{{#each lifts}}
 					<option value="{{id}}">{{name}}</option>
 				{{/each}}
 			</select>
 		</div>
-		<button class="btn btn-primary" onclick="updateEmployee({{employees.id}}))">UPDATE</button>
 	</form>
-</div>
-
-<div class="container">
-	<button class="btn"><a href="/employees">Back</a></button>
 </div>
 
 <script defer>selectResort({{employees.resort_id}});</script>

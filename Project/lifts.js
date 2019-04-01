@@ -43,7 +43,7 @@ module.exports = function(){
 
 	// Gets one lift for the purpose of updating
 	function getLift(res, mysql, context, id, complete){
-		var sql = "SELECT id, name, capacity, highspeed, resort_id FROM lifts WHERE id=?";
+		var sql = "SELECT lifts.id, lifts.name, lifts.capacity, lifts.highspeed, lifts.resort_id, resorts.name AS rname FROM lifts INNER JOIN resorts ON lifts.resort_id = resorts.id WHERE lifts.id=?";
 		var inserts = [id];
 		mysql.pool.query(sql, inserts, function(err, results, fields){
 			if(err){

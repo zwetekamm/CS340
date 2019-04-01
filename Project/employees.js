@@ -16,7 +16,7 @@ module.exports = function(){
 	}
 	// Gets one person for the purpose of updating
 	function getEmployee(res, mysql, context, id, complete){
-		var sql = "SELECT id, fname, lname, resort_id, lift_id FROM employees WHERE id=?";
+		var sql = "SELECT employees.id, employees.fname, employees.lname, employees.birthday, employees.resort_id, employees.lift_id, resorts.name AS rname, lifts.name AS liname FROM employees INNER JOIN resorts ON employees.resort_id = resorts.id INNER JOIN lifts ON employees.lift_id = lifts.id WHERE employees.id=?";
 		var inserts = [id];
 		mysql.pool.query(sql, inserts, function(err, results, fields){
 			if(err){

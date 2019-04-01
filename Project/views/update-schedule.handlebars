@@ -1,3 +1,5 @@
+<button class="btn"><a href="/schedule">Back</a></button>
+
 <div class="container text-center mb-4">
 	<h2>Update Schedule:</h2>
 </div>
@@ -30,14 +32,11 @@
 		</div>
 		<div class="form-group">
 			<label for="date">Date:</label>
-			<input type="Date" class="form-control" name="date" value="{{schedule.date}}">
+			<input type="Date" class="form-control" name="date" value="{{schedule.date}}" required>
+			<small id="formatSmallDate" class="form-text text-muted">Current listed: {{schedule.date}}</small>
 		</div>
-		<button class="btn btn-primary" onclick="updateSchedules({{schedule.id}})">UPDATE</button>
+		<button class="btn btn-primary col-4" onclick="updateSchedules({{schedule.id}})">Update</button>
 	</form>
-</div>
-
-<div class="container">
-	<button class="btn"><a href="/schedule">Back</a></button>
 </div>
 
 <script defer>selectEmployee({{schedule.employee_id}});</script>

@@ -1,29 +1,28 @@
-<div class="container text-center mb-4">
-	<h2>Update Resort: {{resorts.name}} </h2>
+<button class="btn"><a href="/resorts">Back</a></button>
+
+<div class="container text-center mb-4">	
+	<h2>Update Resort:</h2>
+	<h3>{{resorts.name}}</h3>
 </div>
 
 <div class="container col-6 my-4">
 	<form id="update-resort" action="/resorts/{{resorts.id}}" method="POST">
 		<div class="form-group">
 			<label for="name">Name:</label>
-			<input type="text" class="form-control" name="name" value="{{resorts.name}}">
+			<input type="text" class="form-control" name="name" value="{{resorts.name}}" maxlength="30" required>
 		</div>
 		<div class="form-group">
 			<label for="location">Location:</label>
-			<input type="text" class="form-control" name="location" value="{{resorts.location}}">
+			<input type="text" class="form-control" name="location" value="{{resorts.location}}" maxlength="30" required>
 		</div>
 		<div class="form-group">
 			<label for="size">Size:</label>
-			<input type="text" class="form-control" name="size" value="{{resorts.size}}">
+			<input type="number" class="form-control" name="size" value="{{resorts.size}}" min="1" max="9999" required>
 		</div>
 		<div class="form-group">
-			<label for="price">Price:</label>
-			<input type="text" class="form-control" name="price" value="{{resorts.price}}">
+			<label for="price">Ticket Price: </label>
+			<input type="number" class="form-control" name="price" value="{{resorts.price}}" min="1" max="9999" required>
 		</div>
-		<button class="btn btn-primary" onclick="updateResort({{resorts.id}})">UPDATE</button>
+		<button class="btn btn-primary col-4" onclick="updateResort({{resorts.id}})">Update</button>
 	</form>
-</div>
-
-<div class="container">
-	<button class="btn"><a href="/resorts">Back</a></button>
 </div>

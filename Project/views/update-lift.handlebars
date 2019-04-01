@@ -1,16 +1,19 @@
+<button class="btn"><a href="/lifts">Back</a></button>
+
 <div class="container text-center mb-4">
-	<h2>Update Lift: {{lifts.name}} </h2>
+	<h2>Update Lift:</h2>
+	<h3>{{lifts.name}}</h3>
 </div>
 
-<div class="container col-6 my-4 border">
+<div class="container col-6 my-4">
 	<form id="update-lift" action="/lifts/{{lifts.id}}" method="POST">
 		<div class="form-group">
 			<label for="name">Name:</label>
-			<input type="text" class="form-control" name="name" value="{{lifts.name}}">
+			<input type="text" class="form-control" name="name" value="{{lifts.name}}" maxlength="20" required>
 		</div>
 		<div class="form-group">
 			<label for="capacity">Capacity:</label>
-			<select id="capacity-selector" class="form-control" name="capacity">
+			<select id="capacity-selector" class="form-control" name="capacity" required>
 				<option value="2">2</option>
 				<option value="4">4</option>
 				<option value="6">6</option>
@@ -18,23 +21,24 @@
 		</div>
 		<div class="form-group">
 			<label for="highspeed">High-speed?</label>
-			<select id="highspeed-selector" class="form-control" name="highspeed">
+			<select id="highspeed-selector" class="form-control" name="highspeed" required>
 				<option value="Yes">Yes</option>
 				<option value="No">No</option>
 			</select>
+			<small class="form-text text-muted">Current: {{lifts.highspeed}}</small>
 		</div>
 		<div class="form-group">
 			<label for="resort">Resort:</label>
-			<select id="resort-selector" class="form-control" name="resort">
+			<select id="resort-selector" class="form-control" name="resort" required>
 				{{#each resorts}}
 					<option value="{{id}}">{{name}}</option>
 				{{/each}}
 			</select>
 		</div>
-		<button class="btn btn-primary" onclick="updateLift({{lifts.id}})">UPDATE</button>	
+		<button class="btn btn-primary col-4" onclick="updateLift({{lifts.id}})">Update</button>	
 	</form>
 </div>
 
 <script defer>selectCapacity({{lifts.capacity}});</script>
-<script defer>selectHighspeed({{lifts.highspeed}});</script>
+<script defer>selectHighSpeed({{lifts.highspeed}});</script>
 <script defer>selectResort({{lifts.resort_id}});</script>

@@ -1,0 +1,55 @@
+html body {
+	background-color: snow;
+}
+
+header {	
+	padding: 15px;
+}
+
+.row {
+	margin: 0;
+	padding: 40px 0;
+}
+
+.navbar .nav-item {
+	margin: 0 5px;
+	width: 100px;
+	text-align: center;
+}
+
+.navbar .nav-item:hover {
+	background-color: whitesmoke;
+	border-radius: 5px;
+}
+
+#entityList {
+	list-style: none;
+	line-height: 2;
+}
+
+#entityList li {
+	padding: 5px 0;
+}
+
+#customTable {
+	height: 300px;
+	overflow-y: scroll;
+}
+
+#formatDate {
+	display: inline-block;
+	overflow: hidden;
+	max-width: 150px;
+    max-height: 40px;
+}
+
+#formatSmallDate {
+	display: inline-block;
+    overflow: hidden;
+    max-width: 200px;
+    max-height: 25px;
+}
+
+#tableBtn {
+	width: 100px;
+}
